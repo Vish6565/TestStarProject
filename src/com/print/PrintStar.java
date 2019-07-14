@@ -5,18 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PrintStar {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String test = "welcome to Capgemini India";
+		String test = "welcome to Capgemini India. . &@##*@@$$";
 		String addFirst;
-
 		Set<String> set = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
 		List<String> Comaparearray = new ArrayList<String>();
-
+		Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
 		HashMap<String, Integer> duplicateMap = new HashMap<String, Integer>();
 
 		int count = 1;
@@ -29,21 +30,16 @@ public class PrintStar {
 		for (int i = 0; i < test.length(); i++) {
 			addFirst = String.valueOf(test.charAt(i));
 			boolean check = set.contains(addFirst);
+			Matcher matcher = pattern.matcher(addFirst);
 			count = 1;
-			if (check == false) {
+			if (check == false && matcher.matches()) {
 				for (int j = i + 1; j < test.length(); j++) {
 					if (addFirst.equalsIgnoreCase(Comaparearray.get(j))) {
 						count = count + 1;
-						if (!set.contains(addFirst) && !addFirst.trim().equalsIgnoreCase("")) {
-							set.add(addFirst);
-						}
+						set.add(addFirst);
 					}
 				}
-				if (addFirst.trim().equalsIgnoreCase("")) {
-
-				} else {
-					duplicateMap.put(addFirst, count);
-				}
+				duplicateMap.put(addFirst, count);
 			}
 		}
 
