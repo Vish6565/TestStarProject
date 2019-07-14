@@ -13,7 +13,7 @@ public class PrintStar {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String test = "welcome to Capgemini India. . &@##*@@$$";
+		String test = "welcome to Home Vishal.";
 		String addFirst;
 		Set<String> set = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
 		List<String> Comaparearray = new ArrayList<String>();
